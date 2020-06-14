@@ -1,0 +1,254 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url('../img/bg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 20px;
+    font-family: 'Philosopher', sans-serif;
+    font-weight: 400;
+}
+img{
+    width: 80px;
+    height: 80px;
+    user-select: none;
+    cursor: pointer;
+}
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modul-wrap{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: rgba(205, 225, 225, 0.8);
+    opacity: 1;
+    z-index: 3;
+    transition: opacity 1s;
+}
+.modul{
+    width: 1020px;
+    min-height: 80vh;
+    padding: 20px;
+    background-color: rgba(205, 225, 225, 0.8);
+    border: 2px solid black;
+    border-radius: 20px;  
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    position: relative;
+
+}
+.win-messege{
+    width: 350px;
+    height: 300px;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid #1d031e;
+    background: #b459f9;
+    color: white;
+    border-radius: 20px;
+}
+.win-messege h3{
+    margin: 0;
+    padding: 0;
+}
+.info-game{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    min-height: 60px;
+    width: 63%;
+    margin-bottom: 10px;
+    background: #b459f9;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0 15px;
+    border:2px solid #1d031e;
+    flex-wrap: wrap;
+    padding-top:5px;
+}
+.level{
+    order: -1;
+    flex-grow: 1;
+    text-align: center;
+    font-size: 22px;
+    width: 100%;
+    
+}
+.span-attempt{
+    order:1;
+}
+.avatar-wrap{
+    max-width: 210px;
+    display: flex;
+    align-items: center; 
+}
+
+.avatar-wrap img{
+    margin: 0 5px 0 0;
+    border: 1px solid black;
+}
+.form-player__wrap{
+    width: 90%;
+    margin: 0 auto;
+}
+.title{
+    font-size: 24px;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.input-wrap{
+    margin-bottom: 20px;
+}
+.radio-player{
+    display: none;
+}
+.form-player__container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    
+}
+.label-player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    width: 97px;
+    min-height:130px;
+    border: 2px solid #b459f9;
+    cursor: pointer;
+    border-radius: 10px;
+    padding-top: 5px;
+    background-color:#1d031e;
+    font-size: 18px;
+    
+}
+.card-player{
+    display: flex;
+}
+.radio-player:checked + .label-player{
+    border:2px solid blue;
+}
+
+.form-player__input{
+    padding: 5px 10px;
+    width: 250px;
+    margin-left: 20px;
+}
+.form-player__text{
+    font-style: italic;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+.input-wrap{
+    text-align: left;
+}
+.form-btn, .btn-restart, .btn-newGame{
+    cursor: pointer;
+	background: #1d031e;
+    color:white;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: 400;
+    padding: 7px 25px;
+    border: none;
+    border-radius: 5px;
+}
+.form-player{
+    text-align: center;
+}
+.img-container{
+    background-color:white;
+    margin:1px;
+}
+
+.memory-game {
+  width: 540px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  perspective: 1000px;
+  background-color:blueviolet;
+    z-index: 1;
+}
+.memory-card {
+  width:80px;
+  height:80px;
+  margin: 3px;
+  position: relative;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform .5s;
+}
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+  position: absolute;
+  border-radius: 5px;
+  background: #1C7CCC;
+  backface-visibility: hidden;
+
+}
+.close-card{
+      transition: transform 1s;
+}
+.close-card .game-img{
+    opacity: 0;
+}
+.front-face {
+  transform: rotateY(180deg);
+  background-color:#d4d2da;
+}
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform .2s;
+}
+
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+.active {
+    display: none;
+}
+
+.active-win{
+    transition: opacity 1s;
+    opacity: 0;
+    z-index: 0;
+}
+.win-span{
+    text-align: left;
+    width: 100%;
+}
+
