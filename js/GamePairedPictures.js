@@ -39,7 +39,7 @@
             }
                  
            this.randomImgGame();
-           
+
            document.addEventListener('dragstart', function(e){
                 e.preventDefault();
             })
@@ -51,19 +51,14 @@
                if(tag.classList.contains('game-img')){
                    
                    let divActiv = tag.parentElement;
-                   let setTimeOpenCard = setTimeout(()=>{
-                        this.searchIdenticalPictures()
-                    },1500);
-                    
+
                    if(!(divActiv.classList.contains('close-card'))){ 
                        let openCard = document.querySelectorAll('.flip');
+
                     if(openCard.length < 2){
                         divActiv.classList.add('flip');
+                        this.setTimeOpenCard() 
                         
-                        
-                    }else if(openCard.length===2){
-                       clearTimeout(setTimeOpenCard);
-                        setTimeOpenCard 
                     }
                     setTimeout(()=>{
                         this.WinPlayer();
@@ -141,8 +136,11 @@
             this.spanAttempt.innerText = 'Попытки: ' + this.number;
             return this.openPairsOfCard;
          }
-       
-     newGame(){
+        setTimeOpenCard(){
+            setTimeout(()=>{
+                this.searchIdenticalPictures()
+            },1500);} 
+    newGame(){
          this.divContainer.innerHTML='';
          this.modulWin.classList.add('active-win');
          this.number = 0;
