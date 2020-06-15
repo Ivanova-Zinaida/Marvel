@@ -51,9 +51,9 @@
                if(tag.classList.contains('game-img')){
                    
                    let divActiv = tag.parentElement;
-                    let setTimeOpenCard = setTimeout(()=>{
-                            this.searchIdenticalPictures()
-                    },1500)
+                   let setTimeOpenCard = setTimeout(()=>{
+                        this.searchIdenticalPictures()
+                    },1500);
                     
                    if(!(divActiv.classList.contains('close-card'))){ 
                        let openCard = document.querySelectorAll('.flip');
@@ -62,7 +62,7 @@
                         
                         
                     }else if(openCard.length===2){
-                        clearTimeout(setTimeOpenCard);
+                       clearTimeout(setTimeOpenCard);
                         setTimeOpenCard 
                     }
                     setTimeout(()=>{
@@ -121,47 +121,26 @@
     searchIdenticalPictures(){
           let openCard = document.querySelectorAll('.flip');
           let imgFront = document.querySelectorAll('.flip .front-face');
-            if(openCard.length===2){
-          if(imgFront[0].getAttribute('src') == imgFront[1].getAttribute('src')){
+          if(openCard.length===2){
+            if(imgFront[0].getAttribute('src') == imgFront[1].getAttribute('src')){
             for(let i = 0; i < openCard.length; i++){
                 openCard[i].classList.add('close-card');
                 openCard[i].classList.remove('flip');
-                this.openPairsOfCard +=1;
-                
-                
-            };   
+                this.openPairsOfCard +=1;    
+                };   
             }else{
             for(let i = 0; i < openCard.length; i++){
                  openCard[i].classList.remove('flip');
-            };
-            };
-            
+                };
+            };  
 
-               this.number += 1;
-               this.openLastCard();
+            this.number += 1;
+            this.openLastCard();
                                        
-
             }
             this.spanAttempt.innerText = 'Попытки: ' + this.number;
             return this.openPairsOfCard;
-
          }
-       
-     findCard(openCard,imgFront){ 
-        if(imgFront[0].getAttribute('src') == imgFront[1].getAttribute('src')){
-            for(let i = 0; i < openCard.length; i++){
-                openCard[i].classList.add('close-card');
-                openCard[i].classList.remove('flip');
-                this.openPairsOfCard +=1;
-                
-            };   
-        }else{
-            for(let i = 0; i < openCard.length; i++){
-                 openCard[i].classList.remove('flip');
-            };
-        };
-         return this.openPairsOfCard;
-        }
        
      newGame(){
          this.divContainer.innerHTML='';
@@ -202,9 +181,8 @@
             }  
         }
       };
-       
-      
-    }
+          
+    };
    
 
 	function getRandom(min, max){

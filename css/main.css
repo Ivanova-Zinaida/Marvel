@@ -220,8 +220,8 @@ img{
   backface-visibility: hidden;
 
 }
-.close-card{
-      transition: transform 1s;
+.close-card .game-img{
+      transition: opacity 0.5s;
 }
 .close-card .game-img{
     opacity: 0;
@@ -229,6 +229,7 @@ img{
 .front-face {
   transform: rotateY(180deg);
   background-color:#d4d2da;
+  
 }
 .memory-card:active {
   transform: scale(0.97);
