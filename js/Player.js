@@ -18,7 +18,7 @@
             this.divWrapLabel = document.createElement('div');
             this.divWrapLabel.classList.add('input-wrap');
             
-            this.divWrapLabel.innerHTML = `<label class="form-player__label">${description.label}<input type="text" class="form-player__input" placeholder="кодовое имя"></label>`
+            this.divWrapLabel.innerHTML = `<label class="form-player__label">${description.label}<input type="text" class="form-player__input" maxlength="20" placeholder="кодовое имя"></label>`
             
             this.divTop.appendChild(this.text);
             this.divTop.appendChild(this.divWrapLabel);

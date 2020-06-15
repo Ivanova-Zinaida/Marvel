@@ -38,8 +38,9 @@ img{
     transition: opacity 1s;
 }
 .modul{
-    width: 1020px;
-    min-height: 80vh;
+    max-width: 1000px;
+    min-width: 70vw;
+    min-height: 500px;
     padding: 20px;
     background-color: rgba(205, 225, 225, 0.8);
     border: 2px solid black;
@@ -188,7 +189,6 @@ img{
     background-color:white;
     margin:1px;
 }
-
 .memory-game {
   width: 540px;
   margin: auto;
@@ -200,7 +200,7 @@ img{
     z-index: 1;
 }
 .memory-card {
-  width:80px;
+  width: 80px;
   height:80px;
   margin: 3px;
   position: relative;

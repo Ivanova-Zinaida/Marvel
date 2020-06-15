@@ -12,7 +12,7 @@
            this.arrImg = [];
            this.arrImgTwo = [];
            this.openPairsOfCard = 0;
-           this.stopNumber = 34;
+           this.stopNumber = 28;
            this.number = 0;
            
            this.modulWin.classList.add('modul-wrap');
@@ -46,14 +46,30 @@
            
            this.divContainer.addEventListener('click', function(e){            
                e.preventDefault();
-               let tag = e.target;  
+               let tag = e.target; 
+
                if(tag.classList.contains('game-img')){
                    
                    let divActiv = tag.parentElement;
-       
+                    let setTimeOpenCard = setTimeout(()=>{
+                            this.searchIdenticalPictures()
+                    },1500)
+                    
                    if(!(divActiv.classList.contains('close-card'))){ 
-                        this.searchIdenticalPictures(divActiv);         
-                    }     
+                       let openCard = document.querySelectorAll('.flip');
+                    if(openCard.length < 2){
+                        divActiv.classList.add('flip');
+                        
+                        
+                    }else if(openCard.length===2){
+                        clearTimeout(setTimeOpenCard);
+                        setTimeOpenCard 
+                    }
+                    setTimeout(()=>{
+                        this.WinPlayer();
+                      },1700); 
+                     
+                    };     
                };
                
            }.bind(this));
@@ -102,21 +118,33 @@
             this.infoGame.append(this.spanLevel);       
         }
 
-    searchIdenticalPictures(divActiv){
+    searchIdenticalPictures(){
           let openCard = document.querySelectorAll('.flip');
           let imgFront = document.querySelectorAll('.flip .front-face');
-          divActiv.classList.add('flip');
-           if(openCard.length === 2){
-               this.findCard(openCard,imgFront);
+            if(openCard.length===2){
+          if(imgFront[0].getAttribute('src') == imgFront[1].getAttribute('src')){
+            for(let i = 0; i < openCard.length; i++){
+                openCard[i].classList.add('close-card');
+                openCard[i].classList.remove('flip');
+                this.openPairsOfCard +=1;
+                
+                
+            };   
+            }else{
+            for(let i = 0; i < openCard.length; i++){
+                 openCard[i].classList.remove('flip');
+            };
+            };
+            
+
                this.number += 1;
-               this.openLastCard()
-               
-            } 
-            setTimeout(()=>{
-                this.WinPlayer();
-            },2000);
+               this.openLastCard();
+                                       
+
+            }
             this.spanAttempt.innerText = 'Попытки: ' + this.number;
-            return this.number
+            return this.openPairsOfCard;
+
          }
        
      findCard(openCard,imgFront){ 
