@@ -33,6 +33,7 @@
            this.btnNewGame.classList.add('btn-newGame');
            this.btnNewGame.innerText = 'Новая игра';
            
+           this.timer = null;
            for(let i = 1; i < this.srcImg.number; i++){
                let src= `${this.srcImg.src}/${this.srcImg.nameImg}${i}.${this.srcImg.imgExpantion}`
                this.arrImg.push(src);    
@@ -57,13 +58,11 @@
 
                     if(openCard.length < 2){
                         divActiv.classList.add('flip');
-                        this.setTimeOpenCard() 
-                        
-                    }
-                    setTimeout(()=>{
-                        this.WinPlayer();
-                      },1700); 
-                     
+                        clearTimeout(this.timer);
+                        this.timer=setTimeout(function(){
+                            this.searchIdenticalPictures()
+                        }.bind(this),1500)
+                        }
                     };     
                };
                
@@ -136,10 +135,7 @@
             this.spanAttempt.innerText = 'Попытки: ' + this.number;
             return this.openPairsOfCard;
          }
-        setTimeOpenCard(){
-            setTimeout(()=>{
-                this.searchIdenticalPictures()
-            },1500);} 
+
     newGame(){
          this.divContainer.innerHTML='';
          this.modulWin.classList.add('active-win');
@@ -158,7 +154,6 @@
                 this.modulWin.innerHTML = `<div class = 'win-messege'><h3>Уровень: ${this.level}</h3><p>${this.textWinModal.textStop}</p> <span class='win-span'>Успешно открыто ${this.openPairsOfCard+2} карточек</span><span class='win-span'>Количество попыток: ${this.number+1}<span></div>`; 
                 p.append(this.btnNewGame);
             }else {
-
                 this.modulWin.innerHTML = `<div class = 'win-messege'><h3>Уровень: ${this.level}</h3><p>${this.textWinModal.textWin}</p><span class='win-span'>Успешно открыто ${this.openPairsOfCard+2} карточек</span><span class='win-span'>Количество попыток: ${this.number+1}<span></div>`; 
                 p.append(this.btnRestart);  
             }
@@ -176,6 +171,7 @@
                 if(!(card[i].classList.contains('close-card'))){
                     card[i].classList.add('flip');
                 }
+            this.WinPlayer();
             }  
         }
       };
